@@ -1,0 +1,75 @@
+﻿<Page x:Class="GymNote.InlogdUser"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GymNote"
+      mc:Ignorable="d" 
+      d:DesignHeight="900" d:DesignWidth="900"
+      Title="InlogdUser" Background="Green">
+
+    <Border Background="Gray" CornerRadius="30" Margin="20">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+                <ListBox x:Name="ListBoxUserWorkouts" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Margin="10" MaxHeight="300">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="Name: " FontWeight="Bold" Grid.Column="0"  VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding UserName}" Grid.Column="1" Margin="2" VerticalAlignment="Center"/>
+                                <TextBlock Text="Workout: " FontWeight="Bold" Grid.Column="2" Margin="10" VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding WorkoutName}" Grid.Column="3" Margin="2" VerticalAlignment="Center"/>
+                                <TextBlock Text="Sets: " FontWeight="Bold" Grid.Column="4" Margin="10" VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding Sets}" Grid.Column="5" Margin="2" VerticalAlignment="Center"/>
+                                <TextBlock Text="Reps: " FontWeight="Bold" Grid.Column="6" Margin="10" VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding Reps}" Grid.Column="7" Margin="2" VerticalAlignment="Center"/>
+                                <TextBlock Text="Grade: " FontWeight="Bold" Grid.Column="8" Margin="10" VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding Grade}" Grid.Column="9" Margin="2" VerticalAlignment="Center"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </ScrollViewer>
+            <StackPanel Grid.Row="1" Margin="20">
+                <Label Content="Workout Name:" HorizontalAlignment="Center"/>
+                <TextBox x:Name="TextBoxWorkoutName" Margin="0 5" Width="200" HorizontalAlignment="Center"/>
+
+                <Label Content="Sets:" Margin="0 10 0 0" HorizontalAlignment="Center"/>
+                <TextBox x:Name="TextBoxSets" Margin="0 5" Width="200" HorizontalAlignment="Center"/>
+
+                <Label Content="Reps:" Margin="0 10 0 0" HorizontalAlignment="Center"/>
+                <TextBox x:Name="TextBoxReps" Margin="0 5" Width="200" HorizontalAlignment="Center"/>
+
+                <Label Content="Grade:" Margin="0 10 0 0" HorizontalAlignment="Center"/>
+                <TextBox x:Name="TextBoxGrade" Margin="0 5" Width="200" HorizontalAlignment="Center"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20">
+                    <Button x:Name="ButtonAddWorkout" Content="Add" Width="80" Margin="5"/>
+                    <Button x:Name="ButtonDeletWorkout" Content="Delete" Width="80" Margin="5"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
+                    <Label  Content="USER:"  />
+                    <Label x:Name="logdInUserLabel" Content=""/>
+                </StackPanel>
+                <Button x:Name="LogoutButton" Content="Log out" HorizontalAlignment="Center" Height="40" Width="100" Click="LogoutButton_Click"  />
+            </StackPanel>
+        </Grid>
+    </Border>
+</Page>

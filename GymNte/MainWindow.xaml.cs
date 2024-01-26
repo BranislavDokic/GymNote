@@ -1,4 +1,5 @@
 ﻿using GymNote;
+using GymNote.Items;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -30,6 +31,38 @@ namespace GymNte
             //navService.Navigate(createAccPage);
             CreateAccPage createAccPage = new CreateAccPage();
             this.Content = createAccPage;
+        }
+
+        private void LogInButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string username = LogInNickNameBox.Text;
+                string password = LogInPasswordBox.Password;
+
+                DatabaseConnection dbConnection = new DatabaseConnection();
+
+                
+                User loggedInUser = dbConnection.LogdIn(username, password);
+
+                if (loggedInUser != null)
+                {
+                   
+                    InlogdUser userLoggedInPage = new InlogdUser(loggedInUser);
+                    this.Content = userLoggedInPage;
+                }
+                else
+                {
+                    
+                    MessageBox.Show("Invalid username or password. Please try again.");
+                    LogInNickNameBox.Text = "";
+                    LogInPasswordBox.Password = "";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
         }
     }
 }
