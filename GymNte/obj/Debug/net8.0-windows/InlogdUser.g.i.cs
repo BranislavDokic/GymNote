@@ -125,7 +125,7 @@ namespace GymNote {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/GymNote;component/inlogduser.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/GymNote;V1.0.0.0;component/inlogduser.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\InlogdUser.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
