@@ -17,9 +17,7 @@ using System.Windows.Shapes;
 
 namespace GymNote
 {
-    /// <summary>
-    /// Interaction logic for InlogdUser.xaml
-    /// </summary>
+    
     public partial class InlogdUser : Page
     {
         private User user;
@@ -28,7 +26,7 @@ namespace GymNote
             InitializeComponent();
             this.user = user;
             
-            logdInUserLabel.Content = $"Logged in as: {user.Name}";
+            logdInUserLabel.Content = user.Name;
 
             Loaded += (sender, e) =>
             {
@@ -53,6 +51,90 @@ namespace GymNote
 
 
             Window.GetWindow(this).Close();
+        }
+
+       
+
+        private void ButtonAddWorkout_Click(object sender, RoutedEventArgs e)
+        {
+            string workoutName = TextBoxWorkoutName.Text;
+            int sets = int.Parse(TextBoxSets.Text);
+            int reps = int.Parse(TextBoxReps.Text);
+            int weight = int.Parse(TextBoxWeight.Text);
+            string grade = TextBoxGrade.Text;
+            string userName = (string)logdInUserLabel.Content;
+
+
+            DatabaseConnection db = new DatabaseConnection();
+
+            db.AddWorkoutToUser(userName, workoutName, sets, reps, weight, grade);
+
+            ListBoxUserWorkouts.ItemsSource = db.GetUserWorkout(user.Name);
+            
+        }
+
+        private void SerchButton_Click(object sender, RoutedEventArgs e)
+        {
+            string workout = SerchBox.Text;
+            string userName = (string)logdInUserLabel.Content;
+            DatabaseConnection db = new DatabaseConnection();
+            db.Serchworkout(userName, workout);
+            ListBoxUserWorkouts.ItemsSource = db.Serchworkout(user.Name, workout);
+            
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ListBoxUserWorkouts.SelectedItem != null)
+            {
+                string userName = (string)logdInUserLabel.Content;
+
+                User_Workout_Info selectedWorkout = (User_Workout_Info)ListBoxUserWorkouts.SelectedItem;
+
+                if (selectedWorkout != null)
+                {
+                    int workoutId = selectedWorkout.Workoutid;
+
+                    DatabaseConnection db = new DatabaseConnection();
+
+                    db.DeleteWorkout(userName, workoutId);
+
+                    List<User_Workout_Info> userWorkouts = db.GetUserWorkout(user.Name);
+                    ListBoxUserWorkouts.ItemsSource = userWorkouts;
+                }
+                else
+                {
+                    MessageBox.Show("Selected workout is null. Please select a valid workout.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("You have to select a workout to delete");
+            }
+        }
+
+        private void ListBoxUserWorkouts_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+           
+
+        }
+
+        private void UppdateButton_Click(object sender, RoutedEventArgs e)
+        {
+            string userPassword1 = UppdatePasswordTxtBox.Password;
+            string userPassword2 = UppdatePasswordTxtBox2.Password;
+
+            if (userPassword1 == userPassword2)
+            {
+                string userName = (string)logdInUserLabel.Content;
+                DatabaseConnection db = new DatabaseConnection();
+                db.ChangePassword(userName, userPassword2);
+                MessageBox.Show("Password changed Successfully");
+            }
+            else
+            {
+                MessageBox.Show("The Password do not match");
+            }
         }
     }
 }

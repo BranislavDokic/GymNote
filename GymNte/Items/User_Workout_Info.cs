@@ -14,11 +14,12 @@ namespace GymNote.Items
         public int Reps { get; set; }
         public int Weight { get; set; }
         public string Grade { get; set; }
+        public int Workoutid { get; set; }
 
         public User_Workout_Info()
         {
         }
-        public User_Workout_Info(string userName, string workutName, int sets, int reps, int weight, string grade)
+        public User_Workout_Info(string userName, string workutName, int sets, int reps, int weight, string grade, int workoutid)
         {
             UserName = userName;
             WorkoutName = workutName;
@@ -26,6 +27,7 @@ namespace GymNote.Items
             Reps = reps;
             Weight = weight;
             Grade = grade;
+            Workoutid = workoutid;
         }
     }
 

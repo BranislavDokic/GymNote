@@ -16,7 +16,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
-                <ListBox x:Name="ListBoxUserWorkouts" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Margin="10" MaxHeight="300">
+                <ListBox x:Name="ListBoxUserWorkouts" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Margin="10" MaxHeight="300" SelectionChanged="ListBoxUserWorkouts_SelectionChanged">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid>
@@ -31,6 +31,9 @@
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Text="Name: " FontWeight="Bold" Grid.Column="0"  VerticalAlignment="Center"/>
                                 <TextBlock Text="{Binding UserName}" Grid.Column="1" Margin="2" VerticalAlignment="Center"/>
@@ -42,6 +45,10 @@
                                 <TextBlock Text="{Binding Reps}" Grid.Column="7" Margin="2" VerticalAlignment="Center"/>
                                 <TextBlock Text="Grade: " FontWeight="Bold" Grid.Column="8" Margin="10" VerticalAlignment="Center"/>
                                 <TextBlock Text="{Binding Grade}" Grid.Column="9" Margin="2" VerticalAlignment="Center"/>
+                                <TextBlock Text="Workout ID: " FontWeight="Bold" Grid.Column="10" Margin="10" VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding Workoutid}" Grid.Column="11" Margin="2" VerticalAlignment="Center"/>
+
+
                             </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
@@ -57,19 +64,32 @@
                 <Label Content="Reps:" Margin="0 10 0 0" HorizontalAlignment="Center"/>
                 <TextBox x:Name="TextBoxReps" Margin="0 5" Width="200" HorizontalAlignment="Center"/>
 
+                <Label Content="Weight:" Margin="0 10 0 0" HorizontalAlignment="Center"/>
+                <TextBox x:Name="TextBoxWeight" Margin="0 5" Width="200" HorizontalAlignment="Center"/>
+
                 <Label Content="Grade:" Margin="0 10 0 0" HorizontalAlignment="Center"/>
                 <TextBox x:Name="TextBoxGrade" Margin="0 5" Width="200" HorizontalAlignment="Center"/>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20">
-                    <Button x:Name="ButtonAddWorkout" Content="Add" Width="80" Margin="5"/>
-                    <Button x:Name="ButtonDeletWorkout" Content="Delete" Width="80" Margin="5"/>
+                    <Button x:Name="ButtonAddWorkout" Content="Add" Width="80" Margin="5" Click="ButtonAddWorkout_Click"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
                     <Label  Content="USER:"  />
                     <Label x:Name="logdInUserLabel" Content=""/>
                 </StackPanel>
+                <Label Content="Search Workout By Name" HorizontalAlignment="Center" />
+                <TextBox x:Name="SerchBox" Margin="0,0,0,10" Width="200"/>
+                <Button x:Name="SerchButton" Margin="0,0,0,15" Height="25" Width="100" Content="serch workout" Click="SerchButton_Click"/>
+                <Button x:Name="DeleteButton" Margin="0,0,0,15" Height="25" Width="100" Content="Delete workout" Click="DeleteButton_Click" />
                 <Button x:Name="LogoutButton" Content="Log out" HorizontalAlignment="Center" Height="40" Width="100" Click="LogoutButton_Click"  />
+                <Label Content="Uppdate Password" HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="15" FontWeight="Bold"/>
+                <Label Content="write new Password" HorizontalAlignment="Center" />
+                <PasswordBox x:Name="UppdatePasswordTxtBox" HorizontalAlignment="Center" Width="150"/>
+                <Label Content="Verify Password" HorizontalAlignment="Center"/>
+                <PasswordBox x:Name="UppdatePasswordTxtBox2" HorizontalAlignment="Center" Width="150" />
+                <Button x:Name="UppdateButton" HorizontalAlignment="Center" Width="115" Height="20" Content="Uppdate Password" Margin="0,10" Click="UppdateButton_Click"/>
             </StackPanel>
+           
         </Grid>
     </Border>
 </Page>
