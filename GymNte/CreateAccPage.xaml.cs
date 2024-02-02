@@ -31,23 +31,36 @@ namespace GymNote
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
+            
             string userName = CreateNickNameBox.Text;
             string userPassword1 = CreatePasswordBox1.Password;
             string userPassword2 = CreatePasswordBox2.Password;
-            DatabaseConnection db =new DatabaseConnection();
-            if (userPassword1 != userPassword2)
+
+            if (userName.Length <= 45 && userPassword1.Length <= 15 && userPassword2.Length <= 15)
             {
-                MessageBox.Show("The Password do not match");
-                CreateNickNameBox.Text = "";
-                CreatePasswordBox1.Password = "";
-                CreatePasswordBox2.Password = "";
+                DatabaseConnection db = new DatabaseConnection();
+                if (userPassword1 != userPassword2)
+                {
+                    MessageBox.Show("The Password do not match");
+                    CreateNickNameBox.Text = "";
+                    CreatePasswordBox1.Password = "";
+                    CreatePasswordBox2.Password = "";
+                }
+                else
+                {
+                    db.AddUser(userName, userPassword1);
+                    CreateNickNameBox.Text = "";
+                    CreatePasswordBox1.Password = "";
+                    CreatePasswordBox2.Password = "";
+                }
             }
             else
             {
-                db.AddUser(userName, userPassword1);
+                MessageBox.Show("Too many characters");
                 CreateNickNameBox.Text = "";
                 CreatePasswordBox1.Password = "";
                 CreatePasswordBox2.Password = "";
+
             }
         }
 

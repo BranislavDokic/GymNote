@@ -55,20 +55,20 @@
                 </ListBox>
             </ScrollViewer>
             <StackPanel Grid.Row="1" Margin="20">
-                <Label Content="Workout Name:" HorizontalAlignment="Center"/>
-                <TextBox x:Name="TextBoxWorkoutName" Margin="0 5" Width="200" HorizontalAlignment="Center"/>
+                <Label Content="Workout Name Max 45 Characters:" HorizontalAlignment="Center"/>
+                <TextBox x:Name="TextBoxWorkoutName" Margin="0 5" Width="200" HorizontalAlignment="Center" />
 
                 <Label Content="Sets:" Margin="0 10 0 0" HorizontalAlignment="Center"/>
-                <TextBox x:Name="TextBoxSets" Margin="0 5" Width="200" HorizontalAlignment="Center"/>
+                <TextBox x:Name="TextBoxSets" Margin="0 5" Width="200" HorizontalAlignment="Center" PreviewTextInput="NumericInputOnly"/>
 
                 <Label Content="Reps:" Margin="0 10 0 0" HorizontalAlignment="Center"/>
-                <TextBox x:Name="TextBoxReps" Margin="0 5" Width="200" HorizontalAlignment="Center"/>
+                <TextBox x:Name="TextBoxReps" Margin="0 5" Width="200" HorizontalAlignment="Center" PreviewTextInput="NumericInputOnly"/>
 
                 <Label Content="Weight:" Margin="0 10 0 0" HorizontalAlignment="Center"/>
-                <TextBox x:Name="TextBoxWeight" Margin="0 5" Width="200" HorizontalAlignment="Center"/>
+                <TextBox x:Name="TextBoxWeight" Margin="0 5" Width="200" HorizontalAlignment="Center" PreviewTextInput="NumericInputOnly"/>
 
-                <Label Content="Grade:" Margin="0 10 0 0" HorizontalAlignment="Center"/>
-                <TextBox x:Name="TextBoxGrade" Margin="0 5" Width="200" HorizontalAlignment="Center"/>
+                <Label Content="How did exercise feel(Not Good, Good, Very Good) Max 10 Characters:" Margin="0 10 0 0" HorizontalAlignment="Center"/>
+                <TextBox x:Name="TextBoxGrade" Margin="0 5" Width="200" HorizontalAlignment="Center" />
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20">
                     <Button x:Name="ButtonAddWorkout" Content="Add" Width="80" Margin="5" Click="ButtonAddWorkout_Click"/>
@@ -83,7 +83,7 @@
                 <Button x:Name="DeleteButton" Margin="0,0,0,15" Height="25" Width="100" Content="Delete workout" Click="DeleteButton_Click" />
                 <Button x:Name="LogoutButton" Content="Log out" HorizontalAlignment="Center" Height="40" Width="100" Click="LogoutButton_Click"  />
                 <Label Content="Uppdate Password" HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="15" FontWeight="Bold"/>
-                <Label Content="write new Password" HorizontalAlignment="Center" />
+                <Label Content="Write new Password Max Characters 15" HorizontalAlignment="Center" />
                 <PasswordBox x:Name="UppdatePasswordTxtBox" HorizontalAlignment="Center" Width="150"/>
                 <Label Content="Verify Password" HorizontalAlignment="Center"/>
                 <PasswordBox x:Name="UppdatePasswordTxtBox2" HorizontalAlignment="Center" Width="150" />

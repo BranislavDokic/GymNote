@@ -12,12 +12,12 @@
         <StackPanel Margin="30">
             <Label Content="Create your Acc" Foreground="White" FontSize="30" HorizontalAlignment="Center"/>
             <Separator></Separator>
-            <Label Content="NickName" Foreground="White" FontSize="20" Margin="10,0,0,0"/>
-            <TextBox  x:Name="CreateNickNameBox" Margin="10,0,10,0" FontSize="20"/>
-            <Label Content="Password" Foreground="White" FontSize="20" Margin="10,0,0,0"/>
-            <PasswordBox  x:Name="CreatePasswordBox1" Margin="10,0,10,0" FontSize="20"/>
+            <Label Content="NickName Max Characters 45" Foreground="White" FontSize="20" Margin="10,0,0,0"/>
+            <TextBox  x:Name="CreateNickNameBox" Margin="10,0,10,0" FontSize="20" />
+            <Label Content="Password Max Characters 15" Foreground="White" FontSize="20" Margin="10,0,0,0"/>
+            <PasswordBox  x:Name="CreatePasswordBox1" Margin="10,0,10,0" FontSize="20" />
             <Label Content="Verify Password" Foreground="White" FontSize="20" Margin="10,0,0,0"/>
-            <PasswordBox  x:Name="CreatePasswordBox2" Margin="10,0,10,0" FontSize="20"/>
+            <PasswordBox  x:Name="CreatePasswordBox2" Margin="10,0,10,0" FontSize="20" />
             <Button x:Name="CreateButton" Content="Create" Width="150" Height="30" Margin="0,10" Click="CreateButton_Click"/>
             <Label x:Name="CreateAccInfoLabel" Content="" Foreground="White" FontSize="16" HorizontalAlignment="Center"/>
             <Button x:Name="GoBackToLogInButton" Content="Go Back" Width="150" Height="30" Margin="0,0,0,20" Click="GoBackToLogInButton_Click"/>
